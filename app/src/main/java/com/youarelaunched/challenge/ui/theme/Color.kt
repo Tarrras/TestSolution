@@ -58,7 +58,7 @@ internal fun debugColors(
     darkTheme: Boolean = false,
     debugColor: Color = Color.Magenta
 ) = Colors(
-    primary = debugColor,
+    primary = Green,
     primaryVariant = debugColor,
     secondary = debugColor,
     secondaryVariant = debugColor,

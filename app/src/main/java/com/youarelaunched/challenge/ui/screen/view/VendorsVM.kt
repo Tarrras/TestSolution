@@ -18,13 +18,18 @@ class VendorsVM @Inject constructor(
 
     private val _uiState = MutableStateFlow(
         VendorsScreenUiState(
-            vendors = null
+            vendors = null,
+            query = null
         )
     )
     val uiState = _uiState.asStateFlow()
 
     init {
         getVendors()
+    }
+
+    fun onQueryChanged(text: String) {
+        _uiState.value = _uiState.value.copy(query = text)
     }
 
     fun getVendors() {
