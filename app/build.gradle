@@ -19,6 +19,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -54,11 +56,21 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    android {
+        sourceSets {
+            main { java.srcDirs = ['src/main/java'] }
+            test { java.srcDirs = ['src/test/java'] }
+            androidTest { java.srcDirs = ['src/androidTest/java'] }
+        }
+
+    }
 }
 
 dependencies {
+    testImplementation androidX.testing
 
     implementation coroutines.lib
+    testImplementation coroutines.testing
 
     implementation lifecycle.viewModelCompose
 
@@ -70,6 +82,13 @@ dependencies {
     implementation compose.foundationLayout
     implementation compose.uiToolingPreview
     implementation compose.constraintLayout
+
+    androidTestImplementation compose.testing
+    debugImplementation compose.testingManifest
+
+    testImplementation jUnit.jUnit
+    testImplementation mockito.core
+    testImplementation mockito.kotlin
 
     implementation coil.img
     implementation coil.svg

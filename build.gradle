@@ -9,14 +9,17 @@ buildscript {
 
         kotlinVersion = "1.7.10"
 
+        coroutinesVersion = "1.6.4"
         //Coroutines RN https://github.com/Kotlin/kotlinx.coroutines
         coroutines = [
-                lib: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+                lib    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+                testing: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
         ]
 
         //AndroidX core RN https://developer.android.com/jetpack/androidx/releases/core
         androidX = [
-                lib: "androidx.core:core-ktx:1.9.0"
+                lib    : "androidx.core:core-ktx:1.9.0",
+                testing: "androidx.test:core:1.9.0"
         ]
 
         //Lifecycle RN https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1
@@ -47,7 +50,10 @@ buildscript {
                 //Compose tooling RN https://developer.android.com/jetpack/compose/tooling
                 uiToolingPreview: "androidx.compose.ui:ui-tooling-preview:$composeUiVersion",
                 //Constraint layout https://developer.android.com/jetpack/compose/layouts/constraintlayout
-                constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+                constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1",
+                //Compose testing
+                testing         : "androidx.compose.ui:ui-test-junit4:$composeUiVersion",
+                testingManifest : "androidx.compose.ui:ui-test-manifest:$composeUiVersion"
         ]
 
         //Accompanist RN https://github.com/google/accompanist/releases
@@ -68,6 +74,17 @@ buildscript {
         retrofit = [
                 lib          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
                 jsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        ]
+
+        jUnitVersion = "4.12"
+        jUnit = [
+                jUnit: "junit:junit:$jUnitVersion"
+        ]
+
+        mockitoVersion = "4.1.0"
+        mockito = [
+                core  : "org.mockito:mockito-core:$mockitoVersion",
+                kotlin: "org.mockito.kotlin:mockito-kotlin:$mockitoVersion",
         ]
     }
 

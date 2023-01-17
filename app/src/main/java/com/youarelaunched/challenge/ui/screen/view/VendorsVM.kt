@@ -51,11 +51,17 @@ class VendorsVM @Inject constructor(
         _query.update { text }
     }
 
-    private fun getVendors() {
+
+    fun getVendors() {
         viewModelScope.launch {
-            _vendors.update {
-                repository.getVendors()
+            try {
+                _vendors.update {
+                    repository.getVendors()
+                }
+            } catch (exc: Exception) {
+                _vendors.value = null
             }
+
         }
     }
 
