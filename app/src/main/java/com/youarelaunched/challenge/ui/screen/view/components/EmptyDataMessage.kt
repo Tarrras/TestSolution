@@ -1,6 +1,8 @@
 package com.youarelaunched.challenge.ui.screen.view.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,14 +18,18 @@ import com.youarelaunched.challenge.ui.theme.VendorAppTheme
 
 @Composable
 fun EmptyDataMessage(modifier: Modifier = Modifier) =
-    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = modifier.padding(horizontal = 24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(
             text = stringResource(id = R.string.msg_empty_data_title),
-            color = VendorAppTheme.colors.buttonSelected,
-            style = VendorAppTheme.typography.h2
+            color = VendorAppTheme.colors.textTitle,
+            style = VendorAppTheme.typography.h2,
         )
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = stringResource(id = R.string.msg_empty_data_title),
+            text = stringResource(id = R.string.msg_empty_data_subtitle),
             color = VendorAppTheme.colors.textDark,
             style = VendorAppTheme.typography.subtitle2,
             textAlign = TextAlign.Center

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,7 +38,9 @@ fun VendorsScreen(
     onQueryChanged: (String) -> Unit
 ) {
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .imePadding(),
         backgroundColor = VendorAppTheme.colors.background,
         snackbarHost = { ChatsumerSnackbar(it) },
         topBar = {
@@ -73,7 +76,11 @@ fun VendorsScreen(
                     }
 
                 }
-            } else EmptyDataMessage(modifier = Modifier.align(Alignment.Center))
+            } else if (uiState.vendors?.isEmpty() == true) EmptyDataMessage(
+                modifier = Modifier.align(
+                    Alignment.Center
+                )
+            )
         }
     }
 }
